@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+  //join workspace
+  $('#find_account_link').click(function(){
+    window.location.href="../join-workspace/index.html";
+  });
 
   //validatio for email
   var typingTimer;
@@ -41,8 +45,8 @@ function doneTyping(){
     return false;
   }
 }
+
 function okayEmail(){
-  console.log('okayEmail');
   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if($('#signup_email').val().match(mailformat)){
     $('#submit_btn').removeClass('disabled');

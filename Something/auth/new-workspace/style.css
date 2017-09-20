@@ -17,7 +17,7 @@ body {
 
 /*full signup*/
 
-#signup_flow,#signup_flow_password {
+#signup_flow, #signup_flow_password {
   background-color: #f9b644;
 }
 
@@ -82,25 +82,27 @@ form {
 
 /*logo*/
 
-a, a:link{
+a, a:link {
   color: #eb4d5c;
   text-decoration: none;
 }
 
-.logo_link{
+.logo_link {
   display: inline-block;
   cursor: pointer;
 }
 
-img#slack_logo{
+img#slack_logo {
   flex-grow: 0;
   background: 0 0;
 }
-#slack_logo{
+
+#slack_logo {
   margin: 1rem;
   height: 37px;
 }
-img{
+
+img {
   max-width: 100%;
   vertical-align: middle;
   border: 0;
@@ -149,7 +151,7 @@ label {
   font-weight: 400!important;
 }
 
-input[type=text],input[type=password] {
+input[type=text], input[type=password] {
   font-size: 1.25rem;
   line-height: normal;
   padding: .75rem;
@@ -169,11 +171,10 @@ input[type=text],input[type=password] {
 }
 
 ::-webkit-input-placeholder {
-  color: #A0A0A2;
+  color: #cccccd;
 }
 
-input[type=text]:focus, input[type=text]:hover,
-input[type=password]:focus,input[type=password]:hover {
+input[type=text]:focus, input[type=text]:hover, input[type=password]:focus, input[type=password]:hover {
   border-color: #717274;
   outline-offset: 0;
   outline: 0;
@@ -183,15 +184,15 @@ input[type=password]:focus,input[type=password]:hover {
 
 /*error email*/
 
-.fs_split .error #signup_email, .fs_split .error #signup_password, .fs_split textarea{
+.fs_split .error #signup_email, .fs_split .error #signup_password, .fs_split textarea {
   border: 1px solid #eb4d5c;
 }
 
-.fs_split .error .error_message,.fs_split .error .error_message_password {
+.fs_split .error .error_message, .fs_split .error .error_message_password {
   display: inline;
 }
 
-.fs_split .error_message , .fs_split .error_message_password {
+.fs_split .error_message, .fs_split .error_message_password {
   display: none;
   color: #eb4d5c;
   font-weight: 700;
@@ -238,7 +239,8 @@ input[type="checkbox" i] {
 .btn_large {
   padding: 16px 30px 16px;
 }
-#submit_btn.disabled, #make_account.disabled{
+
+#submit_btn.disabled, #make_account.disabled {
   background-color: #717274!important;
   color: #fff;
   opacity: .35;
@@ -256,7 +258,7 @@ input[type="checkbox" i] {
   line-height: 1.2rem;
   text-decoration: none;
   cursor: pointer;
-  border: none;
+  border: 1px solid;
   border-radius: .25rem;
   position: relative;
   display: inline-block;
@@ -269,33 +271,38 @@ input[type="checkbox" i] {
   transition: .3s cubic-bezier(.175, .885, .32, 1.275) padding!important;
 }
 
+
 /*right side*/
-.fs_split_pane_right{
+
+.fs_split_pane_right {
   width: auto;
 }
-.fs_split_pane{
+
+.fs_split_pane {
   height: 100%;
 }
 
-.fs_split_pane_right .fs_split_flex_wrapper{
+.fs_split_pane_right .fs_split_flex_wrapper {
   max-width: 750px;
   margin: auto;
   height: 100%;
 }
-.fs_split_pane_right .fs_split_header{
+
+.fs_split_pane_right .fs_split_header {
   text-align: right;
   align-self: flex-start;
   width: 100%;
   padding: 1rem;
 }
 
-#find_account{
+#find_account {
   z-index: 1;
   color: #fff;
   font-size: 1rem;
   text-align: center;
 }
-#find_account_link{
+
+#find_account_link {
   font-weight: 700;
   color: #fff;
   padding: .5rem 1.25rem;
@@ -306,7 +313,8 @@ input[type="checkbox" i] {
   transition: background .1s ease-out 0s;
   margin-left: .5rem;
 }
-#find_account_link:hover{
+
+#find_account_link:hover {
   font-weight: 700;
   color: #000;
   background-color: #fff;
@@ -314,20 +322,24 @@ input[type="checkbox" i] {
   outline: none;
   transition: background .3s ease-out 0s;
 }
-.fs_split_pane_right .fs_spilt_body{
+
+.fs_split_pane_right .fs_spilt_body {
   width: 100%;
   flex: 1;
 }
-.fs_spilt_pane .fs_spilt_body{
+
+.fs_spilt_pane .fs_spilt_body {
   padding: 0 5%;
   position: relative;
   align-self: center;
   max-width: 100%;
 }
-#signup_graphics{
-  transition:opacity .2s,background-position .2s;
+
+#signup_graphics {
+  transition: opacity .2s, background-position .2s;
 }
-.fs_spilt_pane .fs_spilt_body .fs_split_graphics{
+
+.fs_spilt_pane .fs_spilt_body .fs_split_graphics {
   position: absolute;
   height: 100%;
   width: 76%;
@@ -335,81 +347,95 @@ input[type="checkbox" i] {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+
 /*password*/
-.fs_spilt_pane_full_width{
+
+.fs_spilt_pane_full_width {
   background-color: #fff;
   width: 100%;
   overflow-y: auto;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-.fs_spilt_pane_full_width .fs_split_flex_wrapper{
+.fs_spilt_pane_full_width .fs_split_flex_wrapper {
   max-width: 600px;
   width: 100%;
   min-height: 90%;
-  margin:auto;
+  margin: auto;
   justify-content: flex-start;
 }
-.fs_spilt_pane .fs_split_flex_wrapper{
+
+.fs_spilt_pane .fs_split_flex_wrapper {
   position: relative;
   font-size: 1rem;
   display: flex;
   flex-direction: column;
 }
-.fs_spilt_pane_full_width .fs_spilt_body{
+
+.fs_spilt_pane_full_width .fs_spilt_body {
   padding: 0 1rem;
   margin-bottom: 1rem;
 }
-.fs_spilt_pane .fs_spilt_body{
+
+.fs_spilt_pane .fs_spilt_body {
   position: relative;
   align-self: center;
   max-width: 100%;
 }
-.fs_split h1{
+
+.fs_split h1 {
   font-size: 42px;
   line-height: 48px;
   font-weight: 300;
   margin-bottom: 2rem;
 }
-h1{
+
+h1 {
   letter-spacing: -1px;
   margin: 0 0 1rem;
   display: block;
 }
-.fs_spilt_pane_full_width .body_username_pass{
+
+.fs_spilt_pane_full_width .body_username_pass {
   max-width: 480px;
   width: 100%;
-  margin:0 auto;
+  margin: 0 auto;
   justify-content: center;
 }
- .make_account_btn{
-  display:flex;
+
+.make_account_btn {
+  display: flex;
   justify-content: flex-end;
   margin-top: 12px;
 }
- img{
+
+img {
   display: flex;
+  border-radius: .5rem;
   justify-content: center;
-  margin-left:3.5vw;
+  margin-left: 3.5vw;
   margin-right: 3.5vw;
   margin-top: 2vw;
   margin-bottom: 2vw;
 }
-.welcome_feal{
- margin-bottom: 1.5rem;
- color: #fff;
- font-size: 2.25rem;
- padding-left: 24%;
- display: flex;
- text-align: center;
- justify-content: center;
+
+.welcome_feal {
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-size: 2.25rem;
+  padding-left: 24%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
-.welcome_sub_feal{
+
+.welcome_sub_feal {
   font-size: 20px;
-  color:  #2d2c30;
+  color: #2d2c30;
   padding-left: 24%;
   display: flex;
   text-align: center;

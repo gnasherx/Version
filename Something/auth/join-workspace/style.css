@@ -1,0 +1,236 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quattrocento Sans';
+  margin: 0;
+  height: 100%;
+  background: #fff;
+  position: relative;
+  font-size: 16px;
+  width: 100%;
+  color: #555459;
+  line-height: 1.15rem;
+  overflow-x: hidden;
+}
+nav.top.persistent{
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+nav.top{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 99;
+  transform: translate3d(0,0,0);
+  transition: transform 420ms cubic-bezier(.165,.84,.44,.1);
+}
+nav{
+  display: block;
+}
+
+nav.top.persistent .logo{
+  background-position: left bottom;
+}
+nav .logo{
+  background: url(https://cfr.slack-edge.com/66f9/img/landing/header_logo_sprite.png);
+  background-size: 106px 60px;
+  height: 30px;
+  width: 106px;
+  float: left;
+  margin: 20px 0 0 1rem;
+}
+a, a:link{
+  color:#0576B9;
+  text-decoration: none;
+}
+
+/*page*/
+body #page{
+  overflow: auto;
+}
+#page{
+  top: 0;
+  right: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  transform: translate3d(0,0,0);
+  transition: transform .15s cubic-bezier(.2,.3,.25,.9);
+}
+
+#page_contents{
+  margin: 0 auto;
+  padding: 8rem 2rem;
+}
+.span_3_of_6{
+  width: 30%;
+}
+.col{
+  display: block;
+  margin: 0 0 2%;
+  padding-right: 2%;
+}
+.margin_auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+.float_none{
+  float: none;
+}
+.very_large_bottom_margin{
+  margin-bottom: 4rem;
+}
+
+.fs_split {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+}
+
+#signup_wrapper {
+  max-width: 100%;
+  position: relative;
+}
+
+.fs_split_pane {
+  height: 100%;
+}
+.find_team_flow_wrapper h1{
+  font-weight: 600;
+}
+.small_bottom_margin{
+  margin-bottom: 12px;
+}
+h1{
+  font-size: 2rem;
+  line-height: 2.5rem;
+  margin: 0 0 1rem;
+  display: block;
+}
+
+
+label {
+  font-weight: 700;
+  margin: 0 0 .25rem;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  cursor: default;
+}
+
+.normal {
+  font-weight: 400!important;
+}
+
+input[type=text], input[type=password] {
+  font-size: 1.25rem;
+  line-height: normal;
+  padding: .75rem;
+  border: 1px solid #A0A0A2;
+  border-radius: .25rem;
+  color: #555459;
+  outline: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 .5rem;
+  font-variant-ligatures: none;
+  transition: box-shadow 70ms ease-in-out, border-color 70ms ease-out;
+  box-shadow: none;
+  height: auto;
+  cursor: auto;
+  text-transform: none;
+}
+
+::-webkit-input-placeholder {
+  color: #cccccd;
+}
+
+input[type=text]:focus, input[type=text]:hover, input[type=password]:focus, input[type=password]:hover {
+  border-color: #717274;
+  outline-offset: 0;
+  outline: 0;
+  box-shadow: none;
+}
+
+
+/*error email*/
+
+ #find_team_flow.error #signin_email,  #find_team_flow.error_pass #signin_password,  textarea {
+  border: 1px solid #eb4d5c;
+}
+
+ #find_team_flow.error .error_message, #find_team_flow.error_pass .error_message_password {
+  display: inline;
+}
+
+.error_message, .error_message_password {
+  display: none;
+  color: #eb4d5c;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+p{
+  margin:0 0 8px;
+}
+
+
+.btn_large {
+  padding: 14px 28px 14px;
+}
+
+.join_btn_space{
+  display: flex;
+  justify-content: flex-end;
+}
+
+#join_btn.disabled {
+  background-color: #717274!important;
+  color: #fff;
+  opacity: .35;
+  border: 1px solid #717274;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+#cancel_btn{
+  background: #fff;
+  color: #555459;
+  margin-right: 8px;
+  border: 1px solid #717274;
+
+}
+
+.btn_large {
+  font-size: 20px;
+}
+
+.btn {
+  background: #2ab27b;
+  color: #fff;
+  line-height: 1.2rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #2ab27b;
+  border-radius: .25rem;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.ladda-button {
+  transition: .3s cubic-bezier(.175, .885, .32, 1.275) padding!important;
+}

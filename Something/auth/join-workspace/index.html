@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Join | Version</title>
+    <!--css link-->
+    <link rel="stylesheet" href="style.css">
+    <!--font-style-->
+    <link href='https://fonts.googleapis.com/css?family=Quattrocento Sans' rel='stylesheet'>
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <nav class="top persistent">
+      <a href="#" class="logo"></a>
+    </nav>
+    <div id="page ">
+      <div id="page_contents">
+        <div id="find_team_flow" class="col span_3_of_6 margin_auto float_none find_team_flow_wrapper">
+          <div id="signup_wrapper" class="fs_split_pane fs_spilt_pane_full_width very_large_bottom_margin">
+            <h1 class="small_bottom_margin">Join your workspace</h1>
+
+            <label id="email_label">
+            <span class="normal">Your</span> email address
+            </label>
+            <input type="text" id="signin_email" spellcheck="false" placeholder="you@example.com">
+            <p class="error_message" style="margin-bottom:8px">Sorry, but email is invalid!</p>
+
+            <label id="password_label">
+            <span class="normal">Your</span> password
+            </label>
+            <input type="password" id="signin_password" spellcheck="false" style="margin-bottom:8px;">
+            <p class="error_message_password" style="margin-bottom:8px">Sorry, Make sure that password is okay!.</p>
+
+            <div class="join_btn_space" style="margin-top:12px;">
+              <a id="cancel_btn" class="btn btn_large ladda-button" >
+                <span class="ladda-button">Cancel</span>
+              </a>
+
+              <a id="join_btn" class="btn btn_large ladda-button disabled" >
+                <span class="ladda-button">Your Workspace</span>
+              </a>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
