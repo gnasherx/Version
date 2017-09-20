@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Signup | Version</title>
+  <!--css link-->
+  <link rel="stylesheet" href="style.css">
+  <!--font-style-->
+  <link href='https://fonts.googleapis.com/css?family=Quattrocento Sans' rel='stylesheet'>
+  <!--jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--font awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div id="signup_flow" class="full_height fs_split">
+    <!--left-->
+    <!--email-->
+    <div id="signup_wrapper" class="fs_split_pane fs_split_pane_left">
+      <form class="fs_split_flex_wrapper">
+        <a href="#" class="logo_link">
+          <!-- <img id="slack_logo" src="https://slack.global.ssl.fastly.net/66f9/img/slack_logo_240.png" width="120" height="137" title="Slack"> -->
+        </a>
+
+        <div id="email_form_body" class="fs_split_body">
+          <h1>Signup to create a new workspace </h1>
+          <label id="email_label">
+          <span class="normal">Your</span> email address
+          </label>
+          <input type="text" id="signup_email" spellcheck="false" placeholder="you@example.com" style="color:#555459">
+          <p class="error_message">Sorry, but email is invalid.</p>
+        </div>
+      <!--bottom-->
+        <div id="submit" class="fs_split_footer">
+          <div id="email_checkbox">
+            <input type="checkbox" id="email_misc" checked>
+            <label for="email_misc" style="font-weight:400;">Receive quarterly updates on <br> all the latest from Version</label>
+          </div>
+          <div class="button_container">
+            <a id="submit_btn" class="btn btn_large ladda-button disabled">
+              <span class="ladda-button">Next
+                <i class="fa fa-arrow-right" aria-hidden="true" style="margin-left:4px;font-size:18px;"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!--right-->
+    <div id="" class="fs_spilt_pane fs_split_pane_right">
+      <div class="fs_split_flex_wrapper">
+        <div class="fs_split_header">
+          <div id="find_account">
+            <span>Looking to join an existing workspace?</span>
+            <a href="#" id="find_account_link">Sign in to your workspace</a>
+            <div id="signup_graphics_container" class="fs_spilt_body">
+            <div id="signup_graphics" class="fs_split_graphics" >
+              <!--signup image-->
+              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/560a4440894619.579174270c950.gif"
+               srcset="https://mir-s3-cdn-cf.behance.net/project_modules/disp/560a4440894619.579174270c950.gif 600w,
+               https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/560a4440894619.579174270c950.gif 1080w,"
+                sizes="(max-width: 1080px) 100vw, 1080px">
+
+                <h1 class="welcome_feal">It's foundation for teamwork</h1>
+                <p class="welcome_sub_feal">Version creates alignment and shared understanding across your team,
+                   making you more productive, less stressed, and just a little bit happier.</p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--signup flow-->
+
+
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
