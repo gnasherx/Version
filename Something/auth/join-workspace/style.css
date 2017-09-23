@@ -14,27 +14,31 @@ body {
   line-height: 1.15rem;
   overflow-x: hidden;
 }
-nav.top.persistent{
+
+nav.top.persistent {
   background: #fff;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
-nav.top{
+
+nav.top {
   position: fixed;
   top: 0;
   width: 100%;
   height: 70px;
   z-index: 99;
-  transform: translate3d(0,0,0);
-  transition: transform 420ms cubic-bezier(.165,.84,.44,.1);
+  transform: translate3d(0, 0, 0);
+  transition: transform 1000s cubic-bezier(.165, .84, .44, .1);
 }
-nav{
+
+nav {
   display: block;
 }
 
-nav.top.persistent .logo{
+nav.top.persistent .logo {
   background-position: left bottom;
 }
-nav .logo{
+
+nav .logo {
   background: url(https://cfr.slack-edge.com/66f9/img/landing/header_logo_sprite.png);
   background-size: 106px 60px;
   height: 30px;
@@ -42,45 +46,54 @@ nav .logo{
   float: left;
   margin: 20px 0 0 1rem;
 }
-a, a:link{
-  color:#0576B9;
+
+a, a:link {
+  color: #0576B9;
   text-decoration: none;
 }
 
+
 /*page*/
-body #page{
+
+body #page {
   overflow: auto;
 }
-#page{
+
+#page {
   top: 0;
   right: 0;
   bottom: 0;
   right: 0;
   width: 100%;
-  transform: translate3d(0,0,0);
-  transition: transform .15s cubic-bezier(.2,.3,.25,.9);
+  transform: translate3d(0, 0, 0);
+  transition: transform 1000s cubic-bezier(.2, .3, .25, .9);
 }
 
-#page_contents{
+#page_contents {
   margin: 0 auto;
   padding: 8rem 2rem;
 }
-.span_3_of_6{
+
+.span_3_of_6 {
   width: 30%;
 }
-.col{
+
+.col {
   display: block;
   margin: 0 0 2%;
   padding-right: 2%;
 }
-.margin_auto{
+
+.margin_auto {
   margin-left: auto;
   margin-right: auto;
 }
-.float_none{
+
+.float_none {
   float: none;
 }
-.very_large_bottom_margin{
+
+.very_large_bottom_margin {
   margin-bottom: 4rem;
 }
 
@@ -106,19 +119,21 @@ body #page{
 .fs_split_pane {
   height: 100%;
 }
-.find_team_flow_wrapper h1{
+
+.find_team_flow_wrapper h1 {
   font-weight: 600;
 }
-.small_bottom_margin{
+
+.small_bottom_margin {
   margin-bottom: 12px;
 }
-h1{
+
+h1 {
   font-size: 2rem;
   line-height: 2.5rem;
   margin: 0 0 1rem;
   display: block;
 }
-
 
 label {
   font-weight: 700;
@@ -166,11 +181,11 @@ input[type=text]:focus, input[type=text]:hover, input[type=password]:focus, inpu
 
 /*error email*/
 
- #find_team_flow.error #signin_email,  #find_team_flow.error_pass #signin_password,  textarea {
+#find_team_flow.error #signin_email, #find_team_flow.error_pass #signin_password, textarea {
   border: 1px solid #eb4d5c;
 }
 
- #find_team_flow.error .error_message, #find_team_flow.error_pass .error_message_password {
+#find_team_flow.error .error_message, #find_team_flow.error_pass .error_message_password {
   display: inline;
 }
 
@@ -181,16 +196,16 @@ input[type=text]:focus, input[type=text]:hover, input[type=password]:focus, inpu
   margin-top: 0;
   margin-bottom: 8px;
 }
-p{
-  margin:0 0 8px;
-}
 
+p {
+  margin: 0 0 8px;
+}
 
 .btn_large {
   padding: 14px 28px 14px;
 }
 
-.join_btn_space{
+.join_btn_space {
   display: flex;
   justify-content: flex-end;
 }
@@ -204,12 +219,21 @@ p{
   pointer-events: none;
 }
 
-#cancel_btn{
+#cancel_btn {
   background: #fff;
   color: #555459;
   margin-right: 8px;
   border: 1px solid #717274;
+}
 
+#cancel_btn:hover,#cancel_btn:focus{
+  outline: none;
+  border: 1px solid #000;
+  color: #000;
+}
+
+#join_btn:hover,#join_btn:focus{
+  
 }
 
 .btn_large {

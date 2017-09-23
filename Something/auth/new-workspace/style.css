@@ -184,15 +184,16 @@ input[type=text]:focus, input[type=text]:hover, input[type=password]:focus, inpu
 
 /*error email*/
 
-.fs_split .error #signup_email, .fs_split .error #signup_password, .fs_split textarea {
+.fs_split .error #signup_email, .fs_split .error #signup_password, .fs_split .error #username, .fs_split .error #name, .fs_split textarea {
   border: 1px solid #eb4d5c;
 }
 
-.fs_split .error .error_message, .fs_split .error .error_message_password {
+.fs_split .error .error_message, .fs_split .error .error_message_password,
+.fs_split .error .error_message_name, .fs_split .error .error_message_username {
   display: inline;
 }
 
-.fs_split .error_message, .fs_split .error_message_password {
+.fs_split .error_message, .fs_split .error_message_password, .fs_split .error_message_name, .fs_split .error_message_username {
   display: none;
   color: #eb4d5c;
   font-weight: 700;
@@ -240,7 +241,7 @@ input[type="checkbox" i] {
   padding: 16px 30px 16px;
 }
 
-#submit_btn.disabled, #make_account.disabled {
+#submit_btn.disabled, #make_account.disabled,#continue_to_password.disabled {
   background-color: #717274!important;
   color: #fff;
   opacity: .35;
@@ -290,7 +291,9 @@ input[type="checkbox" i] {
 
 .fs_split_pane_right .fs_split_header {
   text-align: right;
-  align-self: flex-start;
+  flex-direction: column;
+  display: flex;
+  justify-content:space-around;
   width: 100%;
   padding: 1rem;
 }
@@ -351,6 +354,12 @@ input[type="checkbox" i] {
 
 /*password*/
 
+.fs_split .desc {
+    font-size: 1.25rem;
+    color: #9e9ea6;
+    margin-bottom: 2rem;
+}
+
 .fs_spilt_pane_full_width {
   background-color: #fff;
   width: 100%;
@@ -378,6 +387,7 @@ input[type="checkbox" i] {
 
 .fs_spilt_pane_full_width .fs_spilt_body {
   padding: 0 1rem;
+  max-width: 480px;
   margin-bottom: 1rem;
 }
 

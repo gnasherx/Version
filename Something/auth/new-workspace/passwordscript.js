@@ -19,7 +19,7 @@ $(document).ready(function() {
       clearTimeout(typingTimer);
     });
   });
-  $('#signup_email').focusout(function() {
+  $('#signup_password').focusout(function() {
     doneTyping();
   });
 
