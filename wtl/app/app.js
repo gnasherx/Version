@@ -13,7 +13,7 @@ firebase.initializeApp(config)
   const database=firebase.database();
   var currentuser;
   var projectname;
-  var projectref,userRef;
+  var projectref,userRef,groupprojectref;
   var newProjectKey;
 
 $(document).ready(function(){
@@ -24,6 +24,7 @@ $(document).ready(function(){
     if (user) {
     currentuser=user.uid;
     projectref=database.ref('projects').child(currentuser);
+    groupprojectref = database.ref('groups');
     userRef=database.ref('users').child(currentuser);
      show();
 
@@ -70,6 +71,14 @@ document.getElementById('recent_project_name').addEventListener('click',function
        startdate:new Date().getTime(),
        projectkey:newProjectKey
       });
+
+     groupprojectref.child(newProjectKey+ "/" +currentuser + "/" +projectname).set({
+       name:projectname,
+       startdate:new Date().getTime(),
+       projectkey:newProjectKey
+      });
+
+
 
       /*Add recent project name to user details*/
       userRef.child('recentproject').set({

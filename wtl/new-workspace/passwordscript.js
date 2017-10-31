@@ -84,6 +84,7 @@ function createUser(name, username, email) {
     name: name,
     username: username,
     email: email,
+    uid : currentUser
   }
   userRef.child(currentUser).set(user);
   return true;

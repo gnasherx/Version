@@ -1,0 +1,99 @@
+  * {
+    display: block;
+  }
+
+  body {
+    font-family: 'Quattrocento Sans';
+    overflow-y: scroll;
+    font-size: 14px;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background: #F5F5F5;
+    position: relative;
+    display: block;
+    line-height: 1.5rem;
+  }
+
+  header {
+    background: #fff;
+    height: 5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+  }
+
+  header #header_team_name {
+    margin-bottom: 0;
+  }
+
+  .inline_block {
+    display: inline_block;
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin: 0 0 1rem;
+  }
+
+  header #header_team_name a {
+    max-width: 450px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    color: #717274;
+    font-size: 1.4rem;
+    float: left;
+    padding: 1.4rem 1rem 1rem;
+    cursor: pointer;
+    margin-bottom: 0;
+    margin-left: 50px;
+  }
+
+  a, a:link {
+    text-decoration: none;
+  }
+
+  /*page*/
+
+  #page {
+    top: 0;
+    left: 0;
+    border: 0 right: 0;
+    width: 100%;
+  }
+
+  #page_contents {
+    margin: 0 auto;
+    padding: 8rem 40rem;
+  }
+
+  @media only screen and (min-width: 1024px) rollup-plastic.css:1641 #page_contents {
+    width: 1024px;
+  }
+
+  .tab_pane {
+    background: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    padding: 2rem 2rem 1rem;
+    margin: 0 auto 3rem;
+    border: 1px solid #e8e8e8;
+  }
+
+  .col {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 2%;
+  }
+
+  /*list button*/
+
+  .tab_pane #showallusers .button {
+    background: "yellow";
+  }

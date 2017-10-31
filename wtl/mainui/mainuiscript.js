@@ -35,10 +35,10 @@ $(document).ready(function() {
     $('#client_ui').show();
   });
 
-  $('#invite_people').click(function() {
-    $('#fs_modal_invite').show();
-    $('#client_ui').hide();
-  });
+  // $('#invite_people').click(function() {
+  //   $('#fs_modal_invite').show();
+  //   $('#client_ui').hide();
+  // });
 
   $('#cancel_task').click(function() {
     $('#fs_modal_invite').hide();
@@ -60,7 +60,7 @@ $(document).ready(function() {
       // recentTaskref = database.ref('tasks').child(currentuser);
 
       recentProjectName();
-      showAllTask();
+  
     }
   });
 
@@ -95,7 +95,7 @@ $(document).ready(function() {
     $('#client_ui').show();
   });
 
-  function showAllTask() {
+
     userRef.child('recentproject').on('value', function(snapshot) {
       recentprojectkey = snapshot.val().projectkey;
       console.log(recentprojectkey);
@@ -107,8 +107,6 @@ $(document).ready(function() {
         // });
       });
     });
-    return true;
-  }
 
   function renderTask(tasknamevalue) {
     var a = document.createElement('a');
@@ -142,4 +140,9 @@ $(document).ready(function() {
 
 
 
+});
+
+// all users
+$('#invite_people').on('click',function(){
+  window.location.href = '../alluser/index.html';
 });

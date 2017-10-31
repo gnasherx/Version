@@ -57,7 +57,7 @@
                           <!--sidebar content will go here-->
                           <!--home-->
                           <div style="height: 26px;">
-                            <button type="button" class="p-channel_sidebar__link" aria-label="Browse everything">
+                            <button id="clickme" type="button" class="p-channel_sidebar__link" aria-label="Browse everything">
                                 <span class="p-channel_sidebar__name">Home</span><!-- react-empty: 15 -->
                               </button>
                           </div>
@@ -250,55 +250,58 @@
   </div>
 
   <!--invite people-->
-    <div id="fs_modal_invite" role="dialog" class="active">
-      <a id="fs_modal_close_btn_invite" class="fs_modal_btn">
+  <div id="fs_modal_invite" role="dialog" class="active">
+    <a id="fs_modal_close_btn_invite" class="fs_modal_btn">
   			<i class="ts_icon ts_icon_times material-icons" style="font-size:36px;">closed</i>
   			<span class="key_label">esc</span>
   		</a>
-      <div class="contents_container">
-        <div class="contents">
-          <div id="admin_invites_container"  class="admin_invites_container">
+    <div class="contents_container">
+      <div class="contents">
+        <div id="admin_invites_container" class="admin_invites_container">
 
-            <div id="admin_invites_alert" class="align_center alert">
-              <i class="ts_icon_add_user very_small_right_margin blue_fill material-icons" style="font-size:22px;">person_add</i>
-          		<p class="inline">
-          				Invite your team <span class="bold">members</span>.
-          		</p>
-          	</div> <!--admin_invites_alert-->
+          <div id="admin_invites_alert" class="align_center alert">
+            <i class="ts_icon_add_user very_small_right_margin blue_fill material-icons" style="font-size:22px;">person_add</i>
+            <p class="inline">
+              Invite your team <span class="bold">members</span>.
+            </p>
+          </div>
+          <!--admin_invites_alert-->
 
-            <h1 id="admin_invites_header" class="light align_center">
+          <h1 id="admin_invites_header" class="light align_center">
           		<i class="ts_icon ts_icon_paper_plane blue_fill float_none small_right_margin material-icons">send</i>
           		Invite <span class="admin_invites_header_type normal">Members</span>
           	</h1>
 
-            <div id="admin_invites_workflow">
+          <div id="admin_invites_workflow">
+            <div id="individual_invites">
               <div id="individual_invites">
-                <div id="individual_invites">
 
-                  <div id="invite_rows" style="height:80px;">
-                    <div id="invite_0" class="admin_invite_row clearfix">
-                      <div class="col span_1_of_2">
-                        <label class="email full_width">
+                <div id="invite_rows" style="height:80px;">
+                  <div id="invite_0" class="admin_invite_row clearfix">
+                    <div class="col span_1_of_2">
+                      <label class="email full_width">
                           Email Address<br>
                           <div class="full_width">
                             <input id="invite_email" type="text" spellcheck="false" autocorrect="off" class="email_field small" name="email_address" placeholder="name@example.com" data-email-healing="true">
                           </div>
                         </label>
-                      </div>
-                      <div class="col span_1_of_2">
-                        <label class="email full_width">
+                    </div>
+                    <div class="col span_1_of_2">
+                      <label class="email full_width">
                           Full Name<br>
                           <div class="full_width">
                             <input id="invite_fullname" type="text" spellcheck="false" autocorrect="off" class="email_field small" name="email_address"  data-email-healing="true">
                           </div>
                         </label>
-                      </div>
-                    </div><!--invite_0-->
-                  </div><!--invite_row-->
+                    </div>
+                  </div>
+                  <!--invite_0-->
+                </div>
+                <!--invite_row-->
 
 
 
-          			<div id="admin_invites_channel_picker_container" class="no_bottom_margin">
+                <div id="admin_invites_channel_picker_container" class="no_bottom_margin">
                   <div>
                     <label>Default Project</label>
                     <div class="greigh no_bottom_margin">
@@ -316,22 +319,26 @@
                         <button type="submit" id="admin_invites_submit_btn" class="btn btn_large ladda-button ladda" data-action="api_send_invites" data-style="expand-right">
                           <span class="ladda-label" data-clog-click="true" data-clog-event="INVITEMODAL_ACTION" data-clog-params="action=invite,trigger=click_cta_submit_btn">Send Invitations</span>
                           <span class="ladda-spinner"></span></button>
-                        </div>
                       </div>
                     </div>
                   </div>
+                </div>
 
-                </div><!--individual_invites-->
-              </div><!--admin_invites_workflow-->
+              </div>
+              <!--individual_invites-->
+            </div>
+            <!--admin_invites_workflow-->
 
-            </div>  <!--admin_invites_container-->
-          </div> <!--contents-->
-        </div>  <!--contents_container-->
-      </div> <!--fs_modal-->
-
+          </div>
+          <!--admin_invites_container-->
+        </div>
+        <!--contents-->
+      </div>
+      <!--contents_container-->
     </div>
+    <!--fs_modal-->
 
-
+  </div>
 
 
 
