@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <!--font-style-->
+  <link href='https://fonts.googleapis.com/css?family=Quattrocento Sans' rel='stylesheet'>
+  <!--jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--font awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--Firebase connection-->
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
+
+</head>
+
+<body>
+
+  <!--name-->
+  <div id="signup_flow_password" class="full_height fs_split">
+    <div id="signup_wrapper" class="fs_split_pane fs_spilt_pane_full_width">
+      <!--logo-->
+      <a href="#" class="logo_link">
+        <!--  logo-->
+            <img id="slack_logo" src="https://slack.global.ssl.fastly.net/66f9/img/slack_logo_240.png" width="120" height="137" title="Slack">
+          </a>
+
+      <form class="fs_split_flex_wrapper" onsubmit="return false">
+        <div class="fs_spilt_body">
+          <h1>What's your name?</h1>
+          <p class="desc">This is how your teammates in Version will see and refer to you.</p>
+          <div class="body_username_pass">
+            <div id="name_div">
+              <label><span class="normal">Your </span>Name</label>
+              <input type="text" id="name" spellcheck="true" style="color:#555459">
+              <p class="error_message_name">Sorry, Name can't be empty!</p>
+            </div>
+
+            <div id="username_div">
+              <label><span class="normal">Your </span>Username</label>
+              <input type="text" id="username" spellcheck="false" style="color:#555459">
+              <p class="error_message_username">Sorry, Username is already taken!</p>
+            </div>
+
+            <div class="make_account_btn">
+              <a id="continue_to_password" class="btn btn_large ladda-button disabled">
+                  <span class="ladda-button">Continue to Password</span>
+                  <i class="fa fa-arrow-right" aria-hidden="true" style="margin-left:4px;font-size:18px;"></i>
+                 </a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../firebase.js"></script>
+  <script type="text/javascript" src="namescript.js"></script>
+</body>
+
+</html>

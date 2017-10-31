@@ -1,0 +1,451 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quattrocento Sans';
+  margin: 0;
+  height: 100%;
+  background: #fff;
+  font-size: 1.125rem;
+  width: 100%;
+  color: #555459;
+  line-height: 1.15rem;
+  overflow-x: hidden;
+}
+
+
+/*full signup*/
+
+#signup_flow, #signup_flow_password {
+  background-color: #f9b644;
+}
+
+.full_height {
+  height: 100%;
+}
+
+.fs_split {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+}
+
+
+/*left*/
+
+#signup_wrapper {
+  position: relative;
+}
+
+.fs_split_pane {
+  height: 100%;
+}
+
+.fs_split_pane_left {
+  background-color: #fff;
+  color: #434245;
+  width: 50%;
+  min-width: 486px;
+  max-width: 624px;
+  float: left;
+  z-index: 1;
+  overflow-y: auto;
+  word-wrap: break-word;
+}
+
+.fs_split_pane .fs_split_flex_wrapper {
+  position: relative;
+  min-height: 100%;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.fs_split_pane_left>* {
+  flex: 1 0 auto;
+}
+
+form {
+  margin-top: 0em;
+}
+
+
+/*logo*/
+
+a, a:link {
+  color: #eb4d5c;
+  text-decoration: none;
+}
+
+.logo_link {
+  display: inline-block;
+  cursor: pointer;
+}
+
+img#slack_logo {
+  flex-grow: 0;
+  background: 0 0;
+}
+
+#slack_logo {
+  margin: 1rem;
+  height: 37px;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  border: 0;
+}
+
+
+/*email*/
+
+.fs_split_pane_left .fs_split_body {
+  width: 100%;
+}
+
+.fs_split_pane .fs_split_body {
+  padding: 0 12%;
+  position: relative;
+  align-self: center;
+  max-width: 100%;
+}
+
+.fs_split h1 {
+  font-size: 42px;
+  line-height: 48px;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  letter-spacing: -1px;
+  margin: 0 0 1rem;
+}
+
+.fs_split label {
+  margin-bottom: .5rem;
+}
+
+label {
+  font-weight: 700;
+  margin: 0 0 .25rem;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  cursor: default;
+}
+
+.normal {
+  font-weight: 400!important;
+}
+
+input[type=text], input[type=password] {
+  font-size: 1.25rem;
+  line-height: normal;
+  padding: .75rem;
+  border: 1px solid #A0A0A2;
+  border-radius: .25rem;
+  color: #555459;
+  outline: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 .5rem;
+  font-variant-ligatures: none;
+  transition: box-shadow 70ms ease-in-out, border-color 70ms ease-out;
+  box-shadow: none;
+  height: auto;
+  cursor: auto;
+  text-transform: none;
+}
+
+::-webkit-input-placeholder {
+  color: #cccccd;
+}
+
+input[type=text]:focus, input[type=text]:hover, input[type=password]:focus, input[type=password]:hover {
+  border-color: #717274;
+  outline-offset: 0;
+  outline: 0;
+  box-shadow: none;
+}
+
+
+/*error email*/
+
+.fs_split .error #signup_email, .fs_split .error #signup_password, .fs_split .error #username, .fs_split .error #name, .fs_split textarea {
+  border: 1px solid #eb4d5c;
+}
+
+.fs_split .error .error_message, .fs_split .error .error_message_password, .fs_split .error .error_message_name, .fs_split .error .error_message_username, .fs_split .error .error_message {
+  display: inline;
+}
+
+.fs_split .error_message, .fs_split .error_message_password, .fs_split .error_message_name, .fs_split .error_message_username {
+  display: none;
+  color: #eb4d5c;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+
+/*bootm*/
+
+#submit {
+  min-width: 100%;
+  margin-bottom: 1rem;
+}
+
+.fs_split_pane .fs_split_footer:last-of-type {
+  padding-bottom: 2rem;
+}
+
+.fs_split_pane .fs_split_footer {
+  padding: .5rem 12%;
+  margin: 0 auto;
+  text-align: center;
+  align-self: flex-end;
+  max-width: 100%;
+}
+
+#email_checkbox {
+  margin: 1.5rem auto;
+}
+
+input[type="checkbox" i] {
+  margin: 3px 3px 3px 4px;
+  -webkit-appearance: checkbox;
+  padding: initial;
+  border: initial;
+}
+
+#email_checkbox label {
+  font-weight: 400;
+  display: inline;
+}
+
+.btn_large {
+  padding: 16px 30px 16px;
+}
+
+#submit_btn.disabled, #make_account.disabled, #continue_to_password.disabled {
+  background-color: #717274!important;
+  color: #fff;
+  opacity: .35;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.btn_large {
+  font-size: 20px;
+}
+
+.btn {
+  background: #2ab27b;
+  color: #fff;
+  line-height: 1.2rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: .25rem;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.ladda-button {
+  transition: .3s cubic-bezier(.175, .885, .32, 1.275) padding!important;
+}
+
+
+/*right side*/
+
+.fs_split_pane_right {
+  width: auto;
+}
+
+.fs_split_pane {
+  height: 100%;
+}
+
+.fs_split_pane_right .fs_split_flex_wrapper {
+  max-width: 750px;
+  margin: auto;
+  height: 100%;
+}
+
+.fs_split_pane_right .fs_split_header {
+  text-align: right;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 1rem;
+}
+
+#find_account {
+  z-index: 1;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+}
+
+#find_account_link {
+  font-weight: 700;
+  color: #fff;
+  padding: .5rem 1.25rem;
+  line-height: 3rem;
+  border: 1px solid #fff;
+  text-decoration: none;
+  border-radius: .25rem;
+  transition: background .1s ease-out 0s;
+  margin-left: .5rem;
+}
+
+#find_account_link:hover {
+  font-weight: 700;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #fff;
+  outline: none;
+  transition: background .3s ease-out 0s;
+}
+
+.fs_split_pane_right .fs_spilt_body {
+  width: 100%;
+  flex: 1;
+}
+
+.fs_spilt_pane .fs_spilt_body {
+  padding: 0 5%;
+  position: relative;
+  align-self: center;
+  max-width: 100%;
+}
+
+#signup_graphics {
+  transition: opacity .2s, background-position .2s;
+}
+
+.fs_spilt_pane .fs_spilt_body .fs_split_graphics {
+  position: absolute;
+  height: 100%;
+  width: 76%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+/*password*/
+
+.fs_split .desc {
+  font-size: 1.25rem;
+  color: #9e9ea6;
+  margin-bottom: 2rem;
+}
+
+.fs_spilt_pane_full_width {
+  background-color: #fff;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.fs_spilt_pane_full_width .fs_split_flex_wrapper {
+  max-width: 600px;
+  width: 100%;
+  min-height: 90%;
+  margin: auto;
+  justify-content: flex-start;
+}
+
+.fs_spilt_pane .fs_split_flex_wrapper {
+  position: relative;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.fs_spilt_pane_full_width .fs_spilt_body {
+  padding: 0 1rem;
+  max-width: 480px;
+  margin-bottom: 1rem;
+}
+
+.fs_spilt_pane .fs_spilt_body {
+  position: relative;
+  align-self: center;
+  max-width: 100%;
+}
+
+.fs_split h1 {
+  font-size: 42px;
+  line-height: 48px;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  letter-spacing: -1px;
+  margin: 0 0 1rem;
+  display: block;
+}
+
+.fs_spilt_pane_full_width .body_username_pass {
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.make_account_btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+img {
+  display: flex;
+  border-radius: .5rem;
+  justify-content: center;
+  margin-left: 3.5vw;
+  margin-right: 3.5vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+.welcome_feal {
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-size: 2.25rem;
+  padding-left: 24%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.welcome_sub_feal {
+  font-size: 20px;
+  color: #2d2c30;
+  padding-left: 24%;
+  display: flex;
+  text-align: center;
+}
