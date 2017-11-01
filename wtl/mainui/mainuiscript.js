@@ -55,12 +55,13 @@ $(document).ready(function() {
       currentuser = user.uid;
       console.log(currentuser);
       projectref = database.ref('projects').child(currentuser);
+      groupprojectref = database.ref('groups')
       userRef = database.ref('users').child(currentuser);
       taskRef = database.ref('tasks').child(currentuser);
       // recentTaskref = database.ref('tasks').child(currentuser);
 
       recentProjectName();
-  
+
     }
   });
 

@@ -66,9 +66,9 @@ $(document).ready(function() {
 
 });
 
-// $('#cancel_btn').on('click',function(){
-//   console.log('cancel');
-// });
+$('#cancel_btn').on('click',function(){
+  window.location.href = "../new-workspace/index.html";
+});
 var allfirebaseUserRef;
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {

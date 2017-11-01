@@ -13,7 +13,7 @@ firebase.initializeApp(config)
   const database=firebase.database();
   var currentuser;
   var projectname;
-  var projectref,userRef,groupprojectref;
+  var projectref,userRef,usergroups;
   var newProjectKey;
 
 $(document).ready(function(){
@@ -24,8 +24,10 @@ $(document).ready(function(){
     if (user) {
     currentuser=user.uid;
     projectref=database.ref('projects').child(currentuser);
-    groupprojectref = database.ref('groups');
+    groupprojectref=database.ref('groups');
     userRef=database.ref('users').child(currentuser);
+    usergroups = firebase.database().ref('usergroups');
+
      show();
 
     } else {
@@ -66,25 +68,39 @@ document.getElementById('recent_project_name').addEventListener('click',function
    newProjectKey = projectref.push().key;
 
    if(projectname !== ""){
+
      projectref.child(projectname).set({
        name:projectname,
        startdate:new Date().getTime(),
-       projectkey:newProjectKey
+       projectkey:newProjectKey,
       });
 
-     groupprojectref.child(newProjectKey+ "/" +currentuser + "/" +projectname).set({
+     groupprojectref.child(newProjectKey+"/"+currentuser+"/"+projectname).set({
        name:projectname,
        startdate:new Date().getTime(),
        projectkey:newProjectKey
       });
 
-
-
-      /*Add recent project name to user details*/
-      userRef.child('recentproject').set({
+      //  add rcentproject
+      var recentprojectinfo = {
         projectname:projectname,
-        projectkey:newProjectKey
-      });
+        projectkey:newProjectKey,
+      }
+      /*Add recent project name to user details*/
+      userRef.child('recentproject').set(recentprojectinfo);
+
+      //  add currentuser to the group
+      var recentgroupinfo = {
+        groupname:projectname,
+        groupkey:newProjectKey,
+      }
+        // add user to group
+      usergroups.child(currentuser+"/"+newProjectKey).set(recentgroupinfo);
+        // add recentgroup to profile
+      userRef.child('recentgroup').set({
+      groupname:yourRecentGroupName,                /////////////////////////////////////////////////////////<<<<--------------
+      groupkey:groupkey,
+    });
 
      document.getElementById('project_name').value='';
    }else{
@@ -99,10 +115,57 @@ document.getElementById('recent_project_name').addEventListener('click',function
 
    projectref.orderByChild('startdate').on('child_added', function(snapshot){
     var nameofproject = snapshot.val().name;
-    document.getElementById('recent_project_name').innerText=nameofproject;
+    document.getElementById('recent_project_name').innerText = nameofproject;
     renderui(nameofproject);
     return true;
-   });
+  });
+
+  usergroups.child(currentuser).on('child_added',function(snap){
+    var nameofgroup = snap.val().groupname;
+    var keyofgroup = snap.val().groupkey;
+    document.getElementById('recent_group_name').innerText = nameofgroup
+    rendergroup(nameofgroup, keyofgroup);
+    return true;
+  });
+
+}
+
+
+  function rendergroup(groupname, groupkey){
+    var a=document.createElement('a');
+
+    a.style.padding="8px 14px 9px";
+    a.style.fontSize="15px";
+    a.style.backgounrd="#FBFBFA";
+    a.style.color="#555459";
+    a.style.fontWeight="500";
+    a.style.lineHeight="1.2rem";
+    a.style.border="1px solid #A0A0A2"
+    a.style.borderRadius=".25rem";
+    a.style.boxShadow="none";
+    a.style.position="relative";
+    a.style.display="flex";
+    a.style.textAlign="center";
+    a.style.justifyContent="center";
+    a.style.cursor="pointer";
+    a.style.marginRight="4px";
+    a.style.flexWrap="wrap";
+   a.innerText=groupname;
+   var grouplist = document.getElementById('group-list-name');
+   grouplist.appendChild(a);
+
+   $("#group-list-name").on("click",'a', function(event){
+   var yourRecentGroupName=$(this).text();
+   document.getElementById('recent_group_name').innerText=yourRecentGroupName;
+       /*Add recent project name to user details*/
+       userRef.child('recentgroup').set({
+       groupname:yourRecentGroupName,
+       groupkey:groupkey,
+     });
+     /*top recenet project name for easy acces*/
+ });
+
+
     return true;
   }
 
@@ -125,7 +188,6 @@ document.getElementById('recent_project_name').addEventListener('click',function
     a.style.cursor="pointer";
     a.style.marginRight="4px";
     a.style.flexWrap="wrap";
-
      a.innerText=project;
      var projectlist=document.getElementById('project-list-name');
      projectlist.appendChild(a);
@@ -148,7 +210,6 @@ document.getElementById('recent_project_name').addEventListener('click',function
      document.getElementById('recent_project_name').innerText=yourRecentProjectName;
 
     });
-
 
    });
 

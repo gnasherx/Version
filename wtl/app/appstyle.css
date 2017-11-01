@@ -319,11 +319,17 @@
 	.edgeButton-primary{
 		background-color:#fe4365;
 		border-color: transparent;
-	}
-	.edgeButton-primary{
 		border: 1px solid #fe4365;
 		color: #fff;
 	}
+
+	.edgeButton-primary-group{
+		background-color:#f9b644;
+		border-color: transparent;
+		border: 1px solid #f9b644;
+		color: #fff;
+	}
+	
 	.edgebutton{
 		border-radius: 100px;
 		box-shadow: none;
