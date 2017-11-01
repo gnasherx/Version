@@ -75,11 +75,11 @@ document.getElementById('recent_project_name').addEventListener('click',function
        projectkey:newProjectKey,
       });
 
-     groupprojectref.child(newProjectKey+"/"+currentuser+"/"+projectname).set({
-       name:projectname,
-       startdate:new Date().getTime(),
-       projectkey:newProjectKey
-      });
+    //  groupprojectref.child(newProjectKey+"/"+currentuser+"/"+projectname).set({
+    //    name:projectname,
+    //    startdate:new Date().getTime(),
+    //    projectkey:newProjectKey
+    //   });
 
       //  add rcentproject
       var recentprojectinfo = {
@@ -90,17 +90,14 @@ document.getElementById('recent_project_name').addEventListener('click',function
       userRef.child('recentproject').set(recentprojectinfo);
 
       //  add currentuser to the group
-      var recentgroupinfo = {
-        groupname:projectname,
-        groupkey:newProjectKey,
-      }
-        // add user to group
-      usergroups.child(currentuser+"/"+newProjectKey).set(recentgroupinfo);
+      // var recentgroupinfo = {
+      //   groupname:projectname,
+      //   groupkey:newProjectKey,
+      // }
+      //   // add user to group
+      // usergroups.child(currentuser+"/"+newProjectKey).set(recentgroupinfo);
         // add recentgroup to profile
-      userRef.child('recentgroup').set({
-      groupname:yourRecentGroupName,                /////////////////////////////////////////////////////////<<<<--------------
-      groupkey:groupkey,
-    });
+      // userRef.child('recentgroup').set(recentgroupinfo);
 
      document.getElementById('project_name').value='';
    }else{
@@ -120,54 +117,55 @@ document.getElementById('recent_project_name').addEventListener('click',function
     return true;
   });
 
-  usergroups.child(currentuser).on('child_added',function(snap){
-    var nameofgroup = snap.val().groupname;
-    var keyofgroup = snap.val().groupkey;
-    document.getElementById('recent_group_name').innerText = nameofgroup
-    rendergroup(nameofgroup, keyofgroup);
-    return true;
-  });
+  // usergroups.child(currentuser).on('child_added',function(snap){
+  //   var nameofgroup = snap.val().groupname;
+  //   var keyofgroup = snap.val().groupkey;
+  //   console.log(nameofgroup);
+  //   console.log(keyofgroup);
+  //   document.getElementById('recent_group_name').innerText = nameofgroup;
+  //   rendergroup(nameofgroup, keyofgroup);
+  //   return true;
+  // });
 
 }
 
 
-  function rendergroup(groupname, groupkey){
-    var a=document.createElement('a');
-
-    a.style.padding="8px 14px 9px";
-    a.style.fontSize="15px";
-    a.style.backgounrd="#FBFBFA";
-    a.style.color="#555459";
-    a.style.fontWeight="500";
-    a.style.lineHeight="1.2rem";
-    a.style.border="1px solid #A0A0A2"
-    a.style.borderRadius=".25rem";
-    a.style.boxShadow="none";
-    a.style.position="relative";
-    a.style.display="flex";
-    a.style.textAlign="center";
-    a.style.justifyContent="center";
-    a.style.cursor="pointer";
-    a.style.marginRight="4px";
-    a.style.flexWrap="wrap";
-   a.innerText=groupname;
-   var grouplist = document.getElementById('group-list-name');
-   grouplist.appendChild(a);
-
-   $("#group-list-name").on("click",'a', function(event){
-   var yourRecentGroupName=$(this).text();
-   document.getElementById('recent_group_name').innerText=yourRecentGroupName;
-       /*Add recent project name to user details*/
-       userRef.child('recentgroup').set({
-       groupname:yourRecentGroupName,
-       groupkey:groupkey,
-     });
-     /*top recenet project name for easy acces*/
- });
-
-
-    return true;
-  }
+  // function rendergroup(groupname, groupkey){
+  //   var a=document.createElement('a');
+  //
+  //   a.style.padding="8px 14px 9px";
+  //   a.style.fontSize="15px";
+  //   a.style.backgounrd="#FBFBFA";
+  //   a.style.color="#555459";
+  //   a.style.fontWeight="500";
+  //   a.style.lineHeight="1.2rem";
+  //   a.style.border="1px solid #A0A0A2"
+  //   a.style.borderRadius=".25rem";
+  //   a.style.boxShadow="none";
+  //   a.style.position="relative";
+  //   a.style.display="flex";
+  //   a.style.textAlign="center";
+  //   a.style.justifyContent="center";
+  //   a.style.cursor="pointer";
+  //   a.style.marginRight="4px";
+  //   a.style.flexWrap="wrap";
+  //  a.innerText=groupname;
+  //  var grouplist = document.getElementById('group-list-name');
+  //  grouplist.appendChild(a);
+  //
+  //  $("#group-list-name").on("click",'a', function(event){
+  //  var yourRecentGroupName=$(this).text();
+  //  document.getElementById('recent_group_name').innerText=yourRecentGroupName;
+  //      /*Add recent project name to user details*/
+  //      console.log(groupkey);
+  //      userRef.child('recentgroup').set({
+  //      groupname:yourRecentGroupName,
+  //      groupkey:groupkey,
+  //    });
+  //    /*top recenet project name for easy acces*/
+  //  });
+  //   return true;
+  // }
 
   function renderui(project){
     var a=document.createElement('a');
@@ -208,10 +206,7 @@ document.getElementById('recent_project_name').addEventListener('click',function
       });
       /*top recenet project name for easy acces*/
      document.getElementById('recent_project_name').innerText=yourRecentProjectName;
-
     });
-
    });
-
      return true;
   }

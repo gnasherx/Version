@@ -13,7 +13,7 @@ firebase.initializeApp(config)
 $(document).ready(function() {
   var username, usernameclick, name, recentProjectKey, recentProjectName;
 
-  var allusersRef = firebase.database().ref('users');
+  var userRef = firebase.database().ref('users');
   var projectRef = firebase.database().ref('projects');
   var usergroups = firebase.database().ref('usergroups');
   var groups = firebase.database().ref('groups');
@@ -26,7 +26,7 @@ $(document).ready(function() {
     }
   });
 
-  allusersRef.on('child_added', function(snapshot) {
+  userRef.on('child_added', function(snapshot) {
     username = snapshot.val().username;
     name = snapshot.val().name;
     console.log(`username: ${username} name:${name}`);
@@ -35,30 +35,33 @@ $(document).ready(function() {
 
   $("#showallusers").on("click", 'a', function(event) {
     usernameclick = $(this).text();
+    $(this).css("color", "#2ab27b");
     console.log(usernameclick);
-    allusersRef.orderByChild("username").equalTo(usernameclick).on('child_added', function(snap) {
+    userRef.orderByChild("username").equalTo(usernameclick).on('child_added', function(snap) {
       if (snap.val() !== null) {
         var useruid = snap.val().uid;
         console.log(useruid);
 
-        allusersRef.child(currentuser).child("recentproject").once('value', function(s) {
+        userRef.child(currentuser).child("recentproject").once('value', function(s) {
           recentProjectKey = s.val().projectkey;
           recentProjectName = s.val().projectname;
           console.log(recentProjectName);
         });
 
-        // make group with recentproject key
+        // make group with recentproject key======1=======
         projectRef.child(currentuser+"/"+recentProjectName).once('value', function(snap) {
           groups.child(recentProjectKey + "/"+ useruid).child(recentProjectName).set(snap.val());
+          groups.child(recentProjectKey + "/"+ currentuser).child(recentProjectName).set(snap.val());
         });
+
 
         //  add user to the grouop
         var usergroupmodel = {
           groupname : recentProjectName,
           groupkey : recentProjectKey
         }
-        usergroups.child(currentuser).set(usergroupmodel);
-        usergroups.child(useruid).set(usergroupmodel);
+        usergroups.child(currentuser+"/"+recentProjectKey).set(usergroupmodel);///worng
+        usergroups.child(useruid+"/"+recentProjectKey).set(usergroupmodel);
 
 
       }
