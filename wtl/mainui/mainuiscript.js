@@ -10,11 +10,6 @@ var config = {
 firebase.initializeApp(config);
 
 
-const database = firebase.database();
-var currentuser;
-var projectref, userRef, taskRef;
-var recentprojectname, recentprojectkey;
-var taskname, taskpurpose, taskpushkey;
 
 $(document).ready(function() {
   $('#fs_modal').hide();
@@ -50,64 +45,94 @@ $(document).ready(function() {
     $('#client_ui').show();
   });
 
+
+  const database = firebase.database();
+  var currentuser;
+  var projectref, userRef, taskRef,usergroupRef, collaboratewithRef;
+  var recentprojectname, recentprojectkey;
+  var taskname, taskpurpose, taskpushkey;
+
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       currentuser = user.uid;
       console.log(currentuser);
       projectref = database.ref('projects').child(currentuser);
-      groupprojectref = database.ref('groups')
+      collaboratewithRef = firebase.database().ref('collaboratewith');
+      groupRef = database.ref('groups');
+      // usergroupRef = database.ref('usergroups');
       userRef = database.ref('users').child(currentuser);
-      taskRef = database.ref('tasks').child(currentuser);
-      // recentTaskref = database.ref('tasks').child(currentuser);
+      taskRef = database.ref('tasks');
+      // recentTaskref = database.ref('tasks').child(currentuser
 
-      recentProjectName();
+      recentprojectDetails();
+      showAllTask();
+
 
     }
   });
 
-  /*Project name and usesname*/
-  function recentProjectName() {
+  function recentprojectDetails(){
+    /*Project name and usesname*/
     userRef.child('recentproject').once('value', function(snapshot) {
       recentprojectname = snapshot.val().projectname;
       recentprojectkey = snapshot.val().projectkey;
       document.getElementById('team_name').innerText = recentprojectname;
     });
+
     userRef.once('value', function(snap) {
       document.getElementById('team_menu_user_name').innerText = snap.val().username;
+    });
+
+  }
+
+
+
+  document.getElementById('save_channel').addEventListener('click', function() {
+    console.log('click');
+    taskname = document.getElementById('channel_create_title').value;
+    taskpurpose = document.getElementById('channel_purpose_input').value;
+    taskpushkey = taskRef.child(recentprojectkey + "/" + currentuser).push().key;
+
+    taskRef.child(recentprojectkey+"/"+currentuser+"/"+taskpushkey).set({
+      taskname: taskname,
+      taskpushkey: taskpushkey,
+      taskpurpose: taskpurpose,
+      taskstartat: new Date().getTime()
+    });
+
+    collaboratewithRef.child(recentprojectkey).on('value', function(s){
+      taskRef.child(recentprojectkey+"/"+s.val()+"/"+taskpushkey).set({
+        taskname: taskname,
+        taskpushkey: taskpushkey,
+        taskpurpose: taskpurpose,
+        taskstartat: new Date().getTime()
+      });
+    });
+
+
+    userRef.child('recenttask').set({
+      tasknamekey: taskpushkey,
+    });
+    $('#fs_modal').hide();
+    $('#client_ui').show();
+
+  });
+
+
+  function showAllTask() {
+    userRef.child('recentproject').on('value', function(snapshot) {
+      recentprojectkey = snapshot.val().projectkey;
+      console.log(recentprojectkey);
+      taskRef.child(recentprojectkey + "/" + currentuser).on('child_added', function(snap) {
+        var tasknamevalue = snap.val().taskname;
+        console.log(tasknamevalue);
+        renderTask(tasknamevalue);
+      });
     });
     return true;
   }
 
 
-  document.getElementById('save_channel').addEventListener('click', function() {
-    taskname = document.getElementById('channel_create_title').value;
-    taskpurpose = document.getElementById('channel_purpose_input').value;
-    taskpushkey = taskRef.child(recentprojectkey).push().key;
-    taskRef.child(recentprojectkey).child(taskname).set({
-      taskname: taskname,
-      taskkey: taskpushkey,
-      taskpurpose: taskpurpose,
-      taskstartat: new Date().getTime()
-    });
-    userRef.child('recenttask').set({
-      tasknamekey: taskpushkey
-    });
-    $('#fs_modal').hide();
-    $('#client_ui').show();
-  });
-
-
-    userRef.child('recentproject').on('value', function(snapshot) {
-      recentprojectkey = snapshot.val().projectkey;
-      console.log(recentprojectkey);
-      taskRef.child(recentprojectkey).on('child_added', function(snap) {
-        var tasknamevalue = snap.val().taskname;
-        console.log(tasknamevalue);
-        renderTask(tasknamevalue);
-        // userRef.child('recenttask').on('value',function(snapshot){
-        // });
-      });
-    });
 
   function renderTask(tasknamevalue) {
     var a = document.createElement('a');
@@ -126,24 +151,24 @@ $(document).ready(function() {
     return true;
   }
 
-  // send message
-  document.getElementById('type_a_message').addEventListener('keydown', function(e) {
-    if (e.keyCode == 13) {
-
-    }
-  });
-
-  $("#").on("click",'a', function(event){
-  var yourRecentTaskName=$(this).text();
-
+  // all users
+  $('#invite_people').on('click', function() {
+    window.location.href = '../alluser/index.html';
   });
 
 
 
+  // // send message
+  // document.getElementById('type_a_message').addEventListener('keydown', function(e) {
+  //   if (e.keyCode == 13) {
+  //
+  //   }
+  // });
+  //
+  // $("#").on("click", 'a', function(event) {
+  //   var yourRecentTaskName = $(this).text();
+  //
+  // });
 
-});
 
-// all users
-$('#invite_people').on('click',function(){
-  window.location.href = '../alluser/index.html';
-});
+}); //ready

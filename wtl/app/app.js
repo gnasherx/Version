@@ -109,9 +109,11 @@ document.getElementById('recent_project_name').addEventListener('click',function
 
  function show(){
     //retriveing database values
-
-   projectref.orderByChild('startdate').on('child_added', function(snapshot){
-    var nameofproject = snapshot.val().name;
+console.log(userRef.child("recentproject"));
+    userRef.child("recentproject").on('value', function(snapshot){
+    var nameofproject = snapshot.val().projectname;
+    console.log(snapshot.val());
+    console.log(snapshot.val().projectname);
     document.getElementById('recent_project_name').innerText = nameofproject;
     renderui(nameofproject);
     return true;

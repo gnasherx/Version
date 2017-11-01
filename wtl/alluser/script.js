@@ -17,6 +17,7 @@ $(document).ready(function() {
   var projectRef = firebase.database().ref('projects');
   var usergroups = firebase.database().ref('usergroups');
   var groups = firebase.database().ref('groups');
+  var collaboratewithRef = firebase.database().ref('collaboratewith');
 
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -54,15 +55,26 @@ $(document).ready(function() {
           groups.child(recentProjectKey + "/"+ currentuser).child(recentProjectName).set(snap.val());
         });
 
+        var recentprojectinfo = {
+          projectname:recentProjectName,
+          projectkey:recentProjectKey,
+        }
+        /*Add recent project name to user details*/
+        userRef.child(useruid+"/"+'recentproject').set(recentprojectinfo);
+
+        
+
 
         //  add user to the grouop
         var usergroupmodel = {
           groupname : recentProjectName,
-          groupkey : recentProjectKey
+          groupkey : recentProjectKey,
+          currentuser : currentuser,
         }
         usergroups.child(currentuser+"/"+recentProjectKey).set(usergroupmodel);///worng
         usergroups.child(useruid+"/"+recentProjectKey).set(usergroupmodel);
 
+        collaboratewithRef.child(recentProjectKey).set(useruid);
 
       }
     });
