@@ -9,6 +9,11 @@ var config = {
 };
 firebase.initializeApp(config);
 
+const database = firebase.database();
+var currentuser;
+var projectref, userRef, taskRef,usergroupRef, collaboratewithRef, messageRef;
+var recentprojectname, recentprojectkey,taskClick;
+var taskname, taskpurpose, taskpushkey;
 
 
 $(document).ready(function() {
@@ -46,11 +51,6 @@ $(document).ready(function() {
   });
 
 
-  const database = firebase.database();
-  var currentuser;
-  var projectref, userRef, taskRef,usergroupRef, collaboratewithRef;
-  var recentprojectname, recentprojectkey;
-  var taskname, taskpurpose, taskpushkey;
 
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -58,6 +58,7 @@ $(document).ready(function() {
       console.log(currentuser);
       projectref = database.ref('projects').child(currentuser);
       collaboratewithRef = firebase.database().ref('collaboratewith');
+      messageRef = firebase.database().ref('messages');
       groupRef = database.ref('groups');
       // usergroupRef = database.ref('usergroups');
       userRef = database.ref('users').child(currentuser);
@@ -66,7 +67,7 @@ $(document).ready(function() {
 
       recentprojectDetails();
       showAllTask();
-
+      showAllMessages();
 
     }
   });
@@ -101,7 +102,8 @@ $(document).ready(function() {
     });
 
     collaboratewithRef.child(recentprojectkey).on('value', function(s){
-      taskRef.child(recentprojectkey+"/"+s.val()+"/"+taskpushkey).set({
+      console.log(s.val().member);
+      taskRef.child(recentprojectkey+"/"+s.val().member+"/"+taskpushkey).set({
         taskname: taskname,
         taskpushkey: taskpushkey,
         taskpurpose: taskpurpose,
@@ -132,6 +134,19 @@ $(document).ready(function() {
     return true;
   }
 
+  function showAllMessages(){
+    // console.log('all msgs');
+    userRef.child('recenttask').on('value',function(snap){
+      // console.log(snap.val().tasknamekey);
+      // console.log(messageRef.child(recentprojectkey+"/"+currentuser+"/"+snap.val().tasknamekey ));
+      messageRef.child(recentprojectkey+"/"+currentuser+"/"+snap.val().tasknamekey).on('child_added',function(snapshot){
+        console.log(snapshot.val());
+        renderMessage(snapshot.val());
+      });
+    });
+
+  }
+
 
 
   function renderTask(tasknamevalue) {
@@ -145,10 +160,33 @@ $(document).ready(function() {
     a.style.cursor = "pointer";
     a.style.padding = "0 0.75rem 0 16px";
     a.innerText = tasknamevalue;
+    a.setAttribute("href", "#msgs_scroller_div");
     var tasklist = document.getElementById('task_list');
     tasklist.appendChild(a);
 
     return true;
+  }
+
+  function renderMessage(message){
+
+     var a = document.createElement('a');
+     a.style.color = "#000";
+     a.style.height = "26px"
+     a.style.fontSize = "22px";
+    //  a.style.border = "1px solid #e8e8e8";
+    //  a.style.borderRadius = "5px";
+     a.style.fontWeight = "500";
+     a.style.marginBottom = "8px";
+     a.style.alignItems  ="center";
+     a.style.lineHeight = "1.2rem";
+     a.style.position = "relative";
+     a.style.display = "flex";
+     a.style.cursor = "pointer";
+     a.style.padding = "0 0 0 16px";
+      a.innerText = message;
+      var messageList = document.getElementById('msgs_scroller_div');
+      messageList.appendChild(a);
+
   }
 
   // all users
@@ -158,17 +196,40 @@ $(document).ready(function() {
 
 
 
-  // // send message
-  // document.getElementById('type_a_message').addEventListener('keydown', function(e) {
-  //   if (e.keyCode == 13) {
-  //
-  //   }
-  // });
-  //
-  // $("#").on("click", 'a', function(event) {
-  //   var yourRecentTaskName = $(this).text();
-  //
-  // });
+
+
+  $("#task_list").on("click", 'a', function(event) {
+    event.preventDefault();
+    var yourRecentTaskName = $(this).text();
+    console.log(yourRecentTaskName);
+    document.getElementById('taskname').innerText = yourRecentTaskName
+    taskRef.child(recentprojectkey+"/"+currentuser).orderByChild('taskname').equalTo(yourRecentTaskName).on("value", function(snapshot) {
+      snapshot.forEach((function(child) {
+         console.log(child.key);
+         taskClick = child.key;
+         userRef.child('recenttask').set({
+           tasknamekey: taskClick,
+         });
+        //
+       }));
+    });
+
+
+  });
 
 
 }); //ready
+
+
+
+// send message
+document.getElementById('sendmessagebtn').addEventListener('click', function() {
+    console.log(document.getElementById('textmessage').value);
+    var thismessage = document.getElementById('textmessage').value;
+
+    messageRef.child(recentprojectkey+"/"+currentuser+"/"+taskClick).push().set(thismessage);
+    collaboratewithRef.child(recentprojectkey).on('value', function(s){
+      messageRef.child(recentprojectkey+"/"+s.val().member+"/"+taskClick).push().set(thismessage);
+    });
+      $('input[type="text"]').val('');
+});

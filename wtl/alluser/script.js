@@ -62,7 +62,7 @@ $(document).ready(function() {
         /*Add recent project name to user details*/
         userRef.child(useruid+"/"+'recentproject').set(recentprojectinfo);
 
-        
+
 
 
         //  add user to the grouop
@@ -74,7 +74,10 @@ $(document).ready(function() {
         usergroups.child(currentuser+"/"+recentProjectKey).set(usergroupmodel);///worng
         usergroups.child(useruid+"/"+recentProjectKey).set(usergroupmodel);
 
-        collaboratewithRef.child(recentProjectKey).set(useruid);
+        collaboratewithRef.child(recentProjectKey).set({
+          admin: currentuser,
+          member: useruid,
+        });
 
       }
     });

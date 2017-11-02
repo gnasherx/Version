@@ -105,65 +105,25 @@
 
       <!--right side-->
       <div class="client_main_container">
-        <header id="client_header">
-          <div class="channel_header">
-            <!-- <div class="messages_header">
-              <div class="channel_title">
-                <div id="channel_name_container" class="channel_name_container">
-                  <span id="channel_name" class="channel_name">
-                        <button type="button" name="button" id="im_title" class="btn_unstyle">taskname</button>
-                      </span>
-                </div>
-                <div id="channel_header_info" class="channel_header_info">
-                  <div id="star_container" class="channel_header_info_item">
-                    <button class="star ts_tip ts_icon btn_unstyle material-icons" style="font-size:15px;" type="button" name="button">star_border</button>
-                  </div>
-                  <div class="channel_header_info_item channel_header_member_status active">
-                    <span class="presence">
-                      <i class="ts_icon presence_icon material-icons">favorite_border</i>
-                    </span>
-                    <span id="header_status_message">active</span>
-                  </div>
-                </div>
-                <div class="channel_header_info">
 
-                </div>
-              </div>
-
-            </div>
-            <div class="flex_header">
-              <div id="search_container">
-                <form id="header_search_form" class="search_form no_bottom_margin">
-                  <div class="icon_search_wrapper">
-                    <i class="ts_icon_search icon_search material-icons" style="font-size:22px; color:#9D9E96;">search</i>
-                  </div>
-                  <div class="search_input_wrapper">
-                    <input type="text" id="search_tearms" class="search_input" placeholder="Search">
-                  </div>
-                </form>
-              </div>
-              <button id="star_toggle" class="channel_header_icon btn_unstyle ts_tip ts_tip_bottom" type="button" name="button">
-                <i class="material-icons" style="font-size:26px;">star_border</i>
-              </button>
-              <button id="flex_menu_toggle" class="channel_header_icon btn_unstyle ts_tip" type="button" name="button">
-                <i class="material-icons">more_vert</i>
-              </button>
-            </div> -->
-          </div>
+        <header class="headroom showSearch headroom--pinned headroom--top" style="background-color:#e8e8e8">
+          <h1 id="header_team_name" class="inline_block" data-qa="header_team_name">
+            <a href="#" id="taskname">...</a>
+          </h1>
         </header>
+
         <div id="client_body">
           <div id="col_messages">
             <div id="messages_container">
-              <div id="msgs_scroller_div" class="message_pane_scroller">
+              <div id="msgs_scroller_div" class="message_pane_scroller" style="padding:20px;display:flex;flex-direction:column;">
                 <!--all messages will go here.-->
               </div>
             </div>
 
 
-            <div>
+            <!-- <div >
               <div aria-label="New message" class="_4rv3" role="region">
                 <div class="_5irm">
-                  <!--input-->
                   <div class="_kmc navigationFocus" role="presentation">
                     <div class="_3-8x _3oh-">
                       <div tabindex="-1">
@@ -188,7 +148,14 @@
                   </div>
                 </div>
               </div>
+            </div> -->
+
+            <div style="width:100%;flex-direction:row;position:fixed;bottom:0;margin:10px;">
+              <input id="textmessage" type="text" style="width:80%;height:25px;font-size:22px;font-family:Quattrocento Sans;">
+              <button id="sendmessagebtn" type="button" name="button" style="width:70px;height:50px;";>send</button>
             </div>
+
+
             <!--chat input ends here-->
 
           </div>

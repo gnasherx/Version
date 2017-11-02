@@ -64,7 +64,6 @@ $(document).ready(function() {
 
 
 
-});
 
 $('#cancel_btn').on('click',function(){
   window.location.href = "../new-workspace/index.html";
@@ -97,7 +96,7 @@ $('#cancel_btn').on('click',function(){
       .then(function(){
         console.log('okay....');
         checkUserIsSignedUp(signin_email,signin_password);
-        window.location.href="../app/app.html";
+        // window.location.href="../app/app.html";
       });
       //   .catch(function(){
       //   alert('SigninError, login failed!');
@@ -157,3 +156,5 @@ function okayEmailPassword() {
     $('#join_btn').addClass('disabled');
   }
 }
+
+});
